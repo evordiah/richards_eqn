@@ -1,0 +1,57 @@
+;Title of the problem
+;-------------------
+  INFILTRATION IN HOMOGENEOUS COLUMN OF SAND
+;-------------------------------------------
+; KODE: 1 mixed form FD (MFD); 2: h form FD (HFD); 3: h form FE (HFE);
+; 4:teta form FD (TFD)
+;       5:teta form FE (TFE)
+; KBLOCK: code to choose the way for calculating interblock conductivity:
+;         1: arithmetic mean; 2: harmonic mean; 3: geometric mean; 4: upstream
+; KBOUN: code for boundary conditions 0: constant h o theta; 1: constant rate
+;-------------------------------------------------
+;NNODE NMAT  NLAY  KODE  KREST KBOUN KBLOCK
+;-------------------------------------------------
+ 60     4     1      1   0      0     1
+;------------------------------------------------------------------------------
+; IM   KS(IM)   PA(IM)   ALFA(IM)   BETA(IM)   GAMMA(IM)  TETAS(IM)   TETAR(IM)
+;------------------------------------------------------------------------------
+;  Sand            (type 1)
+  1      9.44E-3   1.175E+6  1.611E+6    4.74     3.96     0.287         0.075
+;  Yolo light clay (type 2)
+ 10      1.23E-5    124.6       739.     1.77     4.0      0.495         0.124
+;  Berino          (type 3)
+ 20      6.26E-3     0.0     2.80E-2     2.239    0.553    0.3658        0.0286
+;  Glendale (type 3)
+ 21     1.516E-4     0.0     1.04E-2     1.3954   0.283    0.4686        0.1060
+;
+;----------------- Control data-------------------------------
+;DTMIN   DTPRINT  TPRINT  ITERMX  NSTEPS  TINIZ   TFINAL   EPS
+;-------------------------------------------------------------
+ 1.D-5     200.     200.    30    100000   0.     4000.  1.D-8
+;---------------------------------------
+;ZMIN   DZ   DT    DTMAX DMUL DDIV  NLIM
+;---------------------------------------
+ 0.0    2. 1.D-6  10.D0  1.1   0.5   10
+;-------------
+; Initial data
+;--------------
+; N        HO
+;--------------
+ 1        -20.0
+ 2        -100.
+ 60       -100.
+;---------------
+; Material codes
+;---------------
+;    N       IMAT(N)
+    1        1
+   60        1
+; Restart data
+;--------------------
+; VWI    CVWI    CVWO
+;--------------------
+;  0      0.      0.
+;-------
+;  RATE
+;-------
+  2.E-3
