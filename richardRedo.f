@@ -4,6 +4,7 @@ C       ****************
 C       by G,Gottardi and M.Venutelli
 C       Univesity of Bologna Italy.
 C       last updated January 1994
+C       removing outdated TIME refs 2018
 C
 C       DOS VERSION
 C
@@ -52,7 +53,7 @@ C
 1020    FORMAT(/,1X,' OUTPUT FILE NAME   > ',$)
 1060    FORMAT(/,1X,' OK ?  (Y/N/E)      > ',$)
 C
-C        CALL TIME(T1)
+!        CALL TIMER(T1)
 C
 C
 C--- OPENING OF FILES
@@ -285,7 +286,7 @@ C
  1320   FORMAT(1X,'TIME: ',1P,E12.3,3X,'ITER: ',I4,3X,'DT: ',
      &  1P,E12.3,3X,'DHMAX: ',1P,E12.3)
         IF(TIME.GE.TPRINT) THEN
-        CALL TIME(T2)
+!        CALL TIMER(T2)
         WRITE(16,1065) TIME,T2-T1
  1065   FORMAT(//1X,T15,'REPORT AT TIME: ',1P,E13.3,
      &             T50,'CPU_TIME:',I8,/,
@@ -384,7 +385,7 @@ C
  1300   FORMAT(2X,'STEP ='I5,5X,'X =',E16.7,/4(1P,E25.14))
   110   CLOSE(14)
         CLOSE(16)
-        STOP
+C        STOP
         END
 C       *********************************
         SUBROUTINE ASSFD(HO,H,A,B,C,U,N)
